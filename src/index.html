@@ -7,10 +7,14 @@
   <link href="./output.css" rel="stylesheet">
   <link href="./font.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
-   <script src="./matter.js" defer></script>
+  <script src="./matter.js" defer></script>
+  <script src="./script.js" defer></script>
 </head>
 
 <body class="bg-[#111111] text-white font-['Nunito'] ">
+
+
+
   <section class="flex flex-col justify-between h-screen">
     <header class=" z-10 pointer-events-none  flex items-center justify-between max-w-7xl w-full mx-auto">
       <img class="h-24 w-auto -ml-6 sm:h-50 sm:w-auto sm:-ml-12 " src="./assets/images/logo-removebg-preview.png"></img>
@@ -56,7 +60,7 @@
     </header>
 
     <div class="absolute inset-0  hidden md:block" id="wrapper-canvas">
-  
+
     </div>
 
     <div class=" flex -mt-30 relative">
@@ -64,28 +68,17 @@
 
         <h1 class="pointer-events-none text-3xl sm:text-6xl font-['Spartan'] ">Punit Sharma</h1>
         <h1 class="pl-1 pointer-events-none font-['Merriweather'] italic text-sky-400">MERN Stack Developer</h1>
-        <button 
+        <button id="openProfileBtn"
           class="relative ml-1 mt-6 bg-[#4595eb] py-2 px-6 font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 ease-in-out  duration-300 group  cursor-pointer">
           Profile
-           <svg
-                xmlns:dc="http://purl.org/dc/elements/1.1/"
-                xmlns:cc="http://creativecommons.org/ns#"
-                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:svg="http://www.w3.org/2000/svg"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                version="1.1"
-                x="0px"
-                y="0px"
-                width="44"
-                height="44"
-                viewBox="0 0 100 100"
-                class="absolute top-1/2 -translate-y-1/2 -right-6 group-hover:-right-8 ease-in-out duration-300"
-              >
-                <g transform="translate(0,-952.36218)">
-                  <path
-                    style="
+          <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="44"
+            height="44" viewBox="0 0 100 100"
+            class="absolute top-1/2 -translate-y-1/2 -right-6 group-hover:-right-8 ease-in-out duration-300">
+            <g transform="translate(0,-952.36218)">
+              <path style="
                       text-indent: 0;
                       text-transform: none;
                       direction: ltr;
@@ -94,17 +87,10 @@
                       color: #000000;
                       enable-background: accumulate;
                     "
-                    d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                    fill="#fff"
-                    fill-opacity="1"
-                    stroke="white"
-                    stroke-width="2"
-                    marker="none"
-                    visibility="visible"
-                    display="inline"
-                    overflow="hidden"
-                  />
-                </g>
+                d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
+                fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
+                display="inline" overflow="hidden" />
+            </g>
           </svg>
         </button>
 
@@ -146,28 +132,17 @@
     </div>
 
 
-    <button 
-          class="relative ml-1 mt-6 bg-[#4595eb] py-2 px-6 font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 ease-in-out  duration-300 group cursor-pointer self-center mb-10">
-          Latest Projects
-           <svg
-                xmlns:dc="http://purl.org/dc/elements/1.1/"
-                xmlns:cc="http://creativecommons.org/ns#"
-                xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                xmlns:svg="http://www.w3.org/2000/svg"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                version="1.1"
-                x="0px"
-                y="0px"
-                width="44"
-                height="44"
-                viewBox="0 0 100 100"
-                class="absolute rotate-90 top-7 -translate-x-1/2 left-1/2 group-hover:top-8 ease-in-out duration-300"
-              >
-                <g transform="translate(0,-952.36218)">
-                  <path
-                    style="
+    <button
+      class="relative ml-1 mt-6 bg-[#4595eb] py-2 px-6 font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 ease-in-out  duration-300 group cursor-pointer self-center mb-10">
+      Latest Projects
+      <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="44"
+        height="44" viewBox="0 0 100 100"
+        class="absolute rotate-90 top-7 -translate-x-1/2 left-1/2 group-hover:top-8 ease-in-out duration-300">
+        <g transform="translate(0,-952.36218)">
+          <path style="
                       text-indent: 0;
                       text-transform: none;
                       direction: ltr;
@@ -176,24 +151,173 @@
                       color: #000000;
                       enable-background: accumulate;
                     "
-                    d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                    fill="#fff"
-                    fill-opacity="1"
-                    stroke="white"
-                    stroke-width="2"
-                    marker="none"
-                    visibility="visible"
-                    display="inline"
-                    overflow="hidden"
-                  />
-                </g>
-          </svg>
-        </button>
+            d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
+            fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
+            display="inline" overflow="hidden" />
+        </g>
+      </svg>
+    </button>
   </section>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
-    <script src="https://cdn/jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+  <script src="https://cdn/jsdelivr.net/npm/matter-wrap@0.2.0/build/matter-wrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/matter-attractors@0.1.6/build/matter-attractors.min.js"></script>
+
+  <!-- PROFILE MODAL -->
+  <div id="profileOverlay"
+    class="fixed inset-0 bg-[#111111] backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
+    <div id="custom-scroll" class="relative max-h-[90vh] overflow-y-auto w-full max-w-4xl rounded-2xl   bg-[#111111] border border-slate-700 p-6 text-white">
+      <button id="closeProfileBtn"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center">
+        ✕
+      </button>
+
+      <!-- Header -->
+      <div class="flex items-center gap-4 mb-6">
+  <img
+    src="./assets/images/punitImage.jpg"
+    alt="Punit Sharma"
+    class="w-20 h-20  rounded-full object-cover object-top border-2 border-sky-500"
+  />
+
+        <div>
+          <h2 class="text-2xl font-bold">Punit Sharma</h2>
+          <p class="text-slate-400">MERN Stack Developer</p>
+        </div>
+      </div>
+
+      <!-- About -->
+      <h3 class="text-xl font-semibold mb-2">About Me</h3>
+
+      <p class="text-slate-300 leading-relaxed text-justify">
+        I'm Punit Sharma, an Electronics and Communication Engineering student at NIT Warangal with a strong interest in Competitive Programming,
+        Data Structures & Algorithms, and Full Stack Development. I enjoy solving complex problems and building 
+        web applications that solve real-world problems.
+
+        I have industry experience through my internship at Samsung Research Institute Bangalore and am currently
+        working as a Software Development Engineer at DP World , Hyderabad. My technical interests span across the MERN stack,
+        backend development, and modern software engineering practices. I continuously strive to
+        improve my problem-solving skills while exploring new technologies and building innovative solutions.
+
+      </p>
+
+      <!-- Skills -->
+      <h3 class="text-lg font-semibold mt-8 mb-4">
+        Skills & Technologies
+      </h3>
+
+
+<div class="grid md:grid-cols-2 gap-4">
+
+  <!-- Languages -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-sky-400 font-medium mb-3">Programming Languages</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#C++</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Java</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#JavaScript</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Python</span>
+    </div>
+  </div>
+
+  <!-- Core CS -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-purple-400 font-medium mb-3">Core CS</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#DSA</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#OOP</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#OS</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#CN</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#DBMS</span>
+    </div>
+  </div>
+
+  <!-- Frontend -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-cyan-400 font-medium mb-3">Frontend</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#HTML</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#CSS</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#SCSS</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Tailwind</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#React.js</span>
+    </div>
+  </div>
+
+  <!-- Backend -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-green-400 font-medium mb-3">Backend</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Node.js</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Express.js</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#REST APIs</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#JWT</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Spring Boot</span>
+    </div>
+  </div>
+
+  <!-- Database & Cloud -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-emerald-400 font-medium mb-3">Database & Cloud</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#MongoDB</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Mongoose</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Cloudinary</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Render</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Netlify</span>
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div class="bg-[#111111] hover:bg-gray-900 border border-slate-700 rounded-xl p-4">
+    <h4 class="text-orange-400 font-medium mb-3">Tools</h4>
+
+    <div class="flex flex-wrap gap-2 text-sm">
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Git</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#GitHub</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#Postman</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 hover:bg-gray-600">#VS Code</span>
+    </div>
+  </div>
+
+</div>
+
+      
+
+
+      <!-- MERN -->
+      <h3 class="text-lg font-semibold my-8 ">MERN Stack</h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+        <div class="bg-[#111111] border border-slate-700 rounded-xl p-6 text-center hover:scale-105 ease-in-out duration-200">
+          <div class="text-4xl font-bold text-green-500">M</div>
+          <div class="mt-2 text-sm">MongoDB</div>
+        </div>
+
+        <div class="bg-[#111111] border border-slate-700 rounded-xl p-6 text-center hover:scale-105 ease-in-out duration-200">
+          <div class="text-4xl font-bold text-gray-300">E</div>
+          <div class="mt-2 text-sm">Express.js</div>
+        </div>
+
+        <div class="bg-[#111111] border border-slate-700 rounded-xl p-6 text-center hover:scale-105 ease-in-out duration-200">
+          <div class="text-4xl font-bold text-cyan-400">R</div>
+          <div class="mt-2 text-sm">React</div>
+        </div>
+
+        <div class="bg-[#111111] border border-slate-700 rounded-xl p-6 text-center hover:scale-105 ease-in-out duration-200">
+          <div class="text-4xl font-bold text-lime-400">N</div>
+          <div class="mt-2 text-sm">Node.js</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 

@@ -2,3 +2,18 @@
     max-width: 100%;
     max-height:100%;
 }
+
+
+#custom-scroll::-webkit-scrollbar-thumb {
+  background: #111111;
+}
+
+#custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #222222;
+}
+
+#custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #111111 #1e293b;
+}
+
