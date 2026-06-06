@@ -17,17 +17,34 @@
   scrollbar-color: #111111 #1e293b;
 }
 
+/* #mouse-follower {
+  position: fixed;
+  top: 0; left: 0;
+  width: 440px; height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ff4108 0%, #003b0015 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  display: none;
+} */
+
 #mouse-follower {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background:  radial-gradient(circle, #00ff4155 0%, #003b0033 40%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform;
-      transition: opacity 0.4s ease;
-    }
+  position: fixed;
+  top: 0; left: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00ff4108 0%, #003b0015 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  box-shadow: 0 0 8px 2px #00ff4144, 0 0 18px 4px #00e5ff22;
+  opacity: 0; /* ← add this */
+}
+
+
+
+
+
 
