@@ -17,3 +17,17 @@
   scrollbar-color: #111111 #1e293b;
 }
 
+#mouse-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background:  radial-gradient(circle, #00ff4155 0%, #003b0033 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+      transition: opacity 0.4s ease;
+    }
+
