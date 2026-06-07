@@ -40,127 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Watch Me Hover
 
-// if (window.matchMedia("(pointer: coarse)").matches) {
-//   // Touch device — skip everything
-// } else{
-//   // ── Matrix Text Reveal on Mouse Follower ──
 
-// const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩアイウエオカキクケコ';
-
-// // Build a full-screen canvas of random encrypted characters
-// const canvas = document.createElement('canvas');
-// canvas.id = 'matrix-canvas';
-// Object.assign(canvas.style, {
-//   position: 'fixed',
-//   top: '0',
-//   left: '0',
-//   width: '100%',
-//   height: '100%',
-//   pointerEvents: 'none',
-//   zIndex: '0',
-//   opacity: '0',            // hidden by default — revealed by mask
-// });
-// document.body.prepend(canvas);
-
-// const ctx = canvas.getContext('2d');
-// const FONT_SIZE = 14;
-// let cols, rows, grid = [];
-
-// function resizeCanvas() {
-//   canvas.width  = window.innerWidth;
-//   canvas.height = window.innerHeight;
-//   cols = Math.ceil(canvas.width  / FONT_SIZE);
-//   rows = Math.ceil(canvas.height / FONT_SIZE);
-//   grid = Array.from({ length: cols * rows }, () => randomChar());
-// }
-
-// function randomChar() {
-//   return CHARS[Math.floor(Math.random() * CHARS.length)];
-// }
-
-// // Scramble a random portion of chars each frame for "live" effect
-// function scrambleGrid() {
-//   const count = Math.floor(cols * rows * 0.03); // scramble 3% per frame
-//   for (let i = 0; i < count; i++) {
-//     const idx = Math.floor(Math.random() * grid.length);
-//     grid[idx] = randomChar();
-//   }
-// }
-
-// function drawMatrix() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   ctx.font = `${FONT_SIZE}px monospace`;
-
-//   for (let c = 0; c < cols; c++) {
-//     for (let r = 0; r < rows; r++) {
-//       const char = grid[c + r * cols];
-
-//       // Give each character a slightly different green/cyan shade
-//       const hue  = 140 + Math.floor((c * r) % 60);   // 140–200 = green to cyan
-//       const light = 45 + Math.floor((c + r) % 30);   // brightness variation
-//       ctx.fillStyle = `hsl(${hue}, 100%, ${light}%)`;
-
-//       ctx.fillText(char, c * FONT_SIZE, r * FONT_SIZE + FONT_SIZE);
-//     }
-//   }
-// }
-
-// window.addEventListener('resize', resizeCanvas);
-// resizeCanvas();
-
-// // ── Mouse follower (the reveal mask circle) ──
-// const follower = document.getElementById('mouse-follower');
-// let mouseX = window.innerWidth  / 2;
-// let mouseY = window.innerHeight / 2;
-// let currentX = mouseX, currentY = mouseY;
-// let hasHovered = false;
-
-// document.addEventListener('mousemove', (e) => {
-//   mouseX = e.clientX;
-//   mouseY = e.clientY;
-//   hasHovered = true;
-// });
-// document.addEventListener('mouseleave', () => follower.style.opacity = '0');
-// document.addEventListener('mouseenter', () => follower.style.opacity = '1');
-
-// function lerp(a, b, t) { return a + (b - a) * t; }
-
-// // ── CSS mask on the canvas so text only shows inside the circle ──
-// function updateMask(x, y) {
-//   const r = 220; // reveal radius in px
-//   canvas.style.webkitMaskImage =
-//   canvas.style.maskImage =
-//     `radial-gradient(circle ${r}px at ${x}px ${y}px, black 0%, black 60%, transparent 100%)`;
-//   canvas.style.opacity = '1';
-// }
-
-// (function animate() {
-//   if (mouseX !== null) {
-//     currentX = lerp(currentX, mouseX, 0.10);
-//     currentY = lerp(currentY, mouseY, 0.10);
-//   }
-
-//   follower.style.transform =
-//     `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-
-//   scrambleGrid();
-//   drawMatrix();
-
-//   // Only show mask after first hover
-//   if (hasHovered) {
-//     updateMask(currentX, currentY);
-//   } else {
-//     canvas.style.opacity = '0';  // fully hidden until mouse enters
-//   }
-
-//   requestAnimationFrame(animate);
-// })();
-// }
 
 
 if (window.matchMedia('(pointer: coarse)').matches) {
   // Touch device — skip everything
 } else {
+  
+const hero = document.getElementById("hero");
 
   const SOURCE_TEXT = `Hi , I'm Punit Sharma — ECE student at NIT Warangal, MERN dev, interned at Samsung, working at DP World. I build, I solve , I ship. Click Profile to know more. `;
 
@@ -250,22 +137,31 @@ if (window.matchMedia('(pointer: coarse)').matches) {
   let currentX = 0, currentY = 0;
   let hasHovered = false;
 
-  document.addEventListener('mousemove', (e) => {
+  hero.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     hasHovered = true;
   });
-  document.addEventListener('mouseleave', () => follower.style.opacity = '0');
-  document.addEventListener('mouseenter', () => follower.style.opacity = '1');
+  hero.addEventListener('mouseleave', () => follower.style.opacity = '0');
+  hero.addEventListener('mouseenter', () => follower.style.opacity = '1');
 
   function lerp(a, b, t) { return a + (b - a) * t; }
 
   function updateMask(x, y) {
-    canvas.style.webkitMaskImage =
-    canvas.style.maskImage =
-      `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px, black 0%, black 65%, transparent 100%)`;
-    canvas.style.opacity = '1';
+  const heroRect = hero.getBoundingClientRect();
+  
+  // If current position is outside hero, hide everything
+  if (x < heroRect.left || x > heroRect.right || y < heroRect.top || y > heroRect.bottom) {
+    canvas.style.opacity = '0';
+    follower.style.opacity = '0';
+    return;
   }
+
+  canvas.style.webkitMaskImage =
+  canvas.style.maskImage =
+    `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px, black 0%, black 65%, transparent 100%)`;
+  canvas.style.opacity = '1';
+}
 
   (function animate() {
     if (mouseX !== null) {
@@ -289,3 +185,25 @@ drawMatrix(currentX, currentY);
   })();
 
 }
+
+const architectureModal = document.getElementById("architectureModal");
+const videoTubeImage = document.getElementById("videoTubeImage");
+const closeArchitectureModal = document.getElementById("closeArchitectureModal");
+
+videoTubeImage.addEventListener("click", (e) => {
+  e.preventDefault();
+  architectureModal.classList.remove("hidden");
+  architectureModal.classList.add("flex");
+});
+
+closeArchitectureModal.addEventListener("click", () => {
+  architectureModal.classList.remove("flex");
+  architectureModal.classList.add("hidden");
+});
+
+architectureModal.addEventListener("click", (e) => {
+  if (e.target === architectureModal) {
+    architectureModal.classList.remove("flex");
+    architectureModal.classList.add("hidden");
+  }
+});
