@@ -4,7 +4,7 @@ Software Development Engineer at DP World, Hyderabad. Passionate about Competiti
 
 ## Live Site
 
-Deployed on Netlify — [your-site.netlify.app](https://your-site.netlify.app)
+Deployed on Netlify — https://punitsharma-portfolio.netlify.app
 
 ## Tech Stack
 
@@ -16,17 +16,19 @@ Deployed on Netlify — [your-site.netlify.app](https://your-site.netlify.app)
 ## Project Structure
 
 ```
-├── index.html
-├── output.css         
-├── font.css
-├── style.css
-├── script.js
+├── src/
+│   ├── index.html
+│   ├── output.css        
+│   ├── input.css
+│   ├── font.css
+│   ├── style.css
+│   ├── script.js
+│   └── assets/
+│       └── images/
+├── .gitignore
 ├── netlify.toml
-└── assets/
-    └── images/
+├── package.json
+└── README.md
 ```
-
-
-
 
 
