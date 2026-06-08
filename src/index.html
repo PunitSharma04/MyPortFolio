@@ -8,29 +8,30 @@
   <link href="./font.css" rel="stylesheet">
   <link href="./style.css" rel="stylesheet">
   <script src="./script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body class="bg-[#131313] text-white font-['Nunito'] ">
 
   <div id="mouse-follower"></div>
 
-  <section id="hero" class="flex flex-col justify-between h-screen">
+  <section id="hero" class=" flex flex-col justify-between h-screen">
 
     <header class=" z-10 pointer-events-none  flex items-center justify-between max-w-7xl w-full mx-auto">
       <img class="h-24 w-auto -ml-6 sm:h-50 sm:w-auto sm:-ml-12 " src="./assets/images/logo-removebg-preview.png"></img>
 
       <div class="flex gap-8  pr-1 pointer-events-auto">
 
-        <a class="hidden md:block" href="#projects" >
-        <span class="text-xl hover:text-sky-400">Projects</span>
+        <a class="hidden md:block" href="#projects">
+          <span class="text-xl hover:text-[#fc815c]">Projects</span>
         </a>
 
-        <a class="hidden md:block" href="#publication" >
-        <span class="text-xl hover:text-sky-400">Publication</span>
+        <a class="hidden md:block" href="#publication">
+          <span class="text-xl hover:text-[#fc815c]">Publication</span>
         </a>
 
-        <a class="hidden md:block" href="#contact" >
-        <span class="text-xl hover:text-sky-400">Contact</span>
+        <a class="hidden md:block" href="#contact">
+          <span class="text-xl hover:text-[#fc815c]">Contact</span>
         </a>
 
         <a class="block md:hidden" href="tel:8688660351" target="_blank">
@@ -88,7 +89,7 @@
         </button>
 
       </div>
-      <ul class=" space-y-6 text-[#b0b2c3] absolute  right-2">
+      <ul class=" space-y-6 text-[#b0b2c3] absolute  right-2 md:right:6">
         <li>
           <a href="https://www.linkedin.com/in/punit-sharma-ps22ecb0b04/" target="_blank">
             <svg class="w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -356,8 +357,7 @@
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">Achievements</h3>
             <div class="grid sm:grid-cols-2 gap-3">
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-yellow-400 text-lg mt-0.5">🏆</span>
                 <div>
                   <p class="text-white text-sm font-medium">CodeChef 3★</p>
@@ -365,8 +365,7 @@
                 </div>
               </div>
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-blue-400 text-lg mt-0.5">🏆</span>
                 <div>
                   <p class="text-white text-sm font-medium">Codeforces Pupil</p>
@@ -374,8 +373,7 @@
                 </div>
               </div>
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-green-400 text-lg mt-0.5">📊</span>
                 <div>
                   <p class="text-white text-sm font-medium">800+ DSA Problems</p>
@@ -383,8 +381,7 @@
                 </div>
               </div>
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-orange-400 text-lg mt-0.5">🎯</span>
                 <div>
                   <p class="text-white text-sm font-medium">Global Rank 232</p>
@@ -392,8 +389,7 @@
                 </div>
               </div>
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-purple-400 text-lg mt-0.5">✨</span>
                 <div>
                   <p class="text-white text-sm font-medium">JEE Advanced Qualified</p>
@@ -401,8 +397,7 @@
                 </div>
               </div>
 
-              <div
-                class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
+              <div class=" rounded-xl p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-pink-400 text-lg mt-0.5">⭐</span>
                 <div>
                   <p class="text-white text-sm font-medium">5★ HackerRank</p>
@@ -470,15 +465,15 @@
 
   </section>
 
-  <section id="projects" class="max-w-7xl mx-auto px-4  ">
-    <h2 class="text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] ">
+  <section id="projects" class="max-w-sm md:max-w-xl  lg:max-w-7xl mx-auto px-4  ">
+    <h2 class=" text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] ">
       Latest Projects
     </h2>
-    <div class="flex gap-20 items-center mt-12">
-      <a href="https://careerinsights.netlify.app/" target="_blank" class="w-full flex">
+    <div class="flex p-6 sm:p-8 lg:flex-row flex-col gap-6 lg:gap-20 justify-center items-center mt-12">
+      <a href="https://careerinsights.netlify.app/" target="_blank" class="w-full flex justify-center">
         <div class="relative group hover:scale-105 ease-in-out duration-200">
           <span
-            class="flex group-hover:-top-14 ease(--ease-in-expo) duration-300 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Career
+            class="flex group-hover:-top-12  ease(--ease-in-expo) duration-300 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Career
             Forge
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -488,44 +483,44 @@
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </span>
-          <img class="max-w-120 rounded-3xl mr-auto relative " src="./assets/images/lp.jpg" alt="" />
+          <img class=" max-w-70 lg:max-w-120 rounded-3xl mr-auto relative " src="./assets/images/lp.jpg" alt="" />
         </div>
       </a>
       <div class="w-full">
-        <h3 class="text-[#fc815c] font-bold text-4xl">Career Forge</h3>
-        <span class="text-[#fc815c] text-lg">(Career Growth Companion)</span>
-        <p class="text-justify mt-2">
+        <h3 class="text-[#fc815c] font-bold text-xl md:text-2xl lg:text-4xl">Career Forge</h3>
+        <span class="text-[#fc815c]   lg:text-lg">(Career Growth Companion)</span>
+        <p class="text-justify text-xs mt-2">
           CareerForge is your one-stop destination for career preparation and professional growth.
           Analyze resumes, prepare for interviews, identify skill gaps, and generate ATS-friendly resumes-all powered by
           AI.
         </p>
 
         <ul class="flex flex-wrap gap-2 mt-2">
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5 ">
             React.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5">
             Express.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border  text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5">
             Node.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Google Gemini AI
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Puppeteer
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             MongoDB
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Mongoose
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Scss
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Javascript
           </li>
 
@@ -544,16 +539,16 @@
         </p>
 
         <ul class="flex flex-wrap gap-2 mt-2">
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             React.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Javascript
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Rest Countries Api
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Css
           </li>
 
@@ -605,20 +600,20 @@
         </p>
 
         <ul class="flex flex-wrap gap-2 mt-2">
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Node.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Express.js
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             MongoDB
           </li>
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Mongoose
           </li>
 
-          <li class="border rounded-[50px] border-[#999] px-2.5 py-1.5">
+          <li class="border text-xs  rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">
             Cloudinary
           </li>
 
@@ -705,7 +700,7 @@
           </div>
         </div>
 
-  
+
 
       </div>
     </div>
@@ -713,17 +708,16 @@
   </section>
 
   <section id="contact" class="max-w-7xl mx-auto px-4 pb-12">
-    <h2
-      class=" sm:text-[40px] text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae]  mb-12 ">
+    <h2 class=" sm:text-[40px] text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae]  mb-12 ">
       Let's Connect
     </h2>
     <div class="flex flex-col md:flex-row items-center mt-10">
       <div class="w-full">
         <img src="./assets/images/contact-me.svg" alt="phone" />
       </div>
-      <form class="w-full" name="contactUS" netlify>
+      <form class="w-full" id="contactForm">
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-        <div class="relative mb-4">
+        <div class="relative mb-7">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="currentColor" viewBox="0 0 20 20">
@@ -732,11 +726,14 @@
             </svg>
           </div>
           <input type="text" id="name" name="name"
-            class="border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 bg-slate-800/40 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            class="border outline-none border-slate-700/40 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5  dark:placeholder-gray-400 dark:text-white"
             placeholder="Enter your name" />
+          <span id="nameError" class="absolute left-0 -bottom-5 text-xs text-red-500"></span>
+
+
         </div>
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Email</label>
-        <div class="relative mb-4">
+        <div class="relative mb-7">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
               fill="currentColor" viewBox="0 0 20 16">
@@ -746,17 +743,20 @@
             </svg>
           </div>
           <input type="text" id="email" name="email"
-            class="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 bg-slate-800/40 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+            class=" border outline-none border-slate-700/40 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5   dark:placeholder-gray-400 dark:text-white"
             placeholder="name@gmail.com" />
+          <span id="emailError" class="absolute left-0 -bottom-5 text-xs text-red-500"></span>
         </div>
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Message</label>
         <div class="relative  mb-4">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"></div>
           <textarea id="message" name="message" rows="8"
-            class="border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 dark:bg-slate-800/40 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"></textarea>
+            class="border outline-none border-slate-700/40 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5  dark:placeholder-gray-400 dark:text-white"></textarea>
+          <span id="messageError" class="absolute left-0 -bottom-7
+           text-xs text-red-500"></span>
         </div>
         <button type="submit"
-          class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">
+          class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg  text-sm px-5 py-2.5 mt-5 me-2 mb-2 focus:outline-none">
           Send
         </button>
       </form>
@@ -764,17 +764,16 @@
   </section>
 
   <footer class="flex flex-col items-center pb-10">
-    <p class=" text-gray-300">Punit Sharma</p>
     <a href="#hero" class="black-logo my-4">
-      <img  class=" h-12 w-auto  " src="./assets/images/logo-removebg-preview.png"></img>
+      <img class=" h-12 w-auto  " src="./assets/images/logo-removebg-preview.png"></img>
     </a>
     <ul class="mx-auto flex items-center justify-center gap-6 text-[#b0b2c3]">
       <li>
-        <a href="https://www.linkedin.com/in/https://github.com/punitsharma04/" target="_blank">
+        <a href="https://github.com/punitsharma04/" target="_blank">
           <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path fill="currentColor"
-                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-            </svg>
+            <path fill="currentColor"
+              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+          </svg>
         </a>
       </li>
       <li>
@@ -787,7 +786,7 @@
         </a>
       </li>
       <li>
-        <a href="https://www.instagram.com/.punit_sharma/">
+        <a href="https://www.instagram.com/_punit.sharma" target="_blank">
           <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path fill="currentColor"
               d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
@@ -807,6 +806,84 @@
     </ul>
   </footer>
 
+  <script>
+    emailjs.init({ publicKey: 'LCqb8HfvejGiyd94S' });
+    const form = document.getElementById('contactForm');
+    const btn = form.querySelector('button[type="submit"]');
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+
+    function showError(input, errorElement, message) {
+      errorElement.textContent = message;
+      input.classList.remove('border-slate-700/40');
+      input.classList.add('border-red-500');
+    }
+
+    function clearError(input, errorElement) {
+      errorElement.textContent = '';
+      input.classList.remove('border-red-500');
+      input.classList.add('border-slate-700/40')
+    }
+
+    // Remove error while typing
+    nameInput.addEventListener('input', () => clearError(nameInput, nameError));
+    emailInput.addEventListener('input', () => clearError(emailInput, emailError));
+    messageInput.addEventListener('input', () => clearError(messageInput, messageError));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      let valid = true;
+
+      if (!nameInput.value.trim()) {
+        showError(nameInput, nameError, 'Name is required');
+        valid = false;
+      }
+
+      if (!emailInput.value.trim()) {
+        showError(emailInput, emailError, 'Email is required');
+        valid = false;
+      } else if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)
+      ) {
+        showError(emailInput, emailError, 'Please enter a valid email');
+        valid = false;
+      }
+
+      if (!messageInput.value.trim()) {
+        showError(messageInput, messageError, 'Message is required');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        await emailjs.sendForm(
+          'service_4j9qkf1',
+          'template_800a0ta',
+          form
+        );
+
+        btn.textContent = 'Sent ✓';
+        btn.style.background = '#16a34a';
+        form.reset();
+
+      } catch (err) {
+        btn.textContent = 'Failed — try again';
+        btn.style.background = '#dc2626';
+        btn.disabled = false;
+      }
+    });
+  </script>
 
 </body>
 
