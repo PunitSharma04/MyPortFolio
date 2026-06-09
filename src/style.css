@@ -1,8 +1,7 @@
 #wrapper-canvas canvas {
-    max-width: 100%;
-    max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
 }
-
 
 #custom-scroll::-webkit-scrollbar-thumb {
   background: #111111;
@@ -31,21 +30,61 @@
 
 #mouse-follower {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle, #00ff4108 0%, #003b0015 50%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    #00ff4108 0%,
+    #003b0015 50%,
+    transparent 70%
+  );
   pointer-events: none;
   z-index: 1;
   will-change: transform;
-  box-shadow: 0 0 8px 2px #00ff4144, 0 0 18px 4px #00e5ff22;
+  box-shadow:
+    0 0 8px 2px #00ff4144,
+    0 0 18px 4px #00e5ff22;
   opacity: 0; /* ← add this */
 }
-
 
 .error {
   border-color: red;
   color: red;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
