@@ -9,54 +9,67 @@
   <link href="./style.css" rel="stylesheet">
   <script src="./script.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <title>Punit Sharma. Portfolio</title>
+  <style>
+    /* Touch-active state mirrors hover for project cards */
+    .project-card.touch-active .project-tooltip {
+      opacity: 1;
+      top: -2.5rem;
+    }
+    .project-card.touch-active .project-img {
+      transform: scale(1.05);
+    }
+    /* Scroll fade-in animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
 </head>
 
-<body class="bg-[#131313] text-white font-['Nunito'] ">
+<body class="bg-[#111] text-white font-['Nunito']">
 
   <div id="mouse-follower"></div>
 
-  <section id="hero" class=" flex flex-col justify-between h-screen">
+  <section id="hero" class="flex flex-col justify-between h-screen">
 
-    
-    <header class=" z-10 pointer-events-none  flex items-center justify-between max-w-7xl w-full mx-auto">
-      <img class="h-24 w-auto -ml-6 sm:h-50 sm:w-auto sm:-ml-12 " src="./assets/images/logo-removebg-preview.png"></img>
+    <!-- HEADER: Publication + Contact only in nav -->
+    <header class="z-10 pointer-events-none flex items-center justify-between max-w-7xl w-full mx-auto">
+      <img class="h-24 w-auto -ml-6 sm:h-50 sm:w-auto sm:-ml-12" src="./assets/images/logo-removebg-preview.png" />
 
       <div class="flex gap-6 sm:gap-8 pr-1 pointer-events-auto">
-
-        
-        <a class="hidden md:block" href="#projects">
-          <span class="text-xl hover:text-[#fc815c]">Projects</span>
-        </a>
         <a class="hidden md:block" href="#publication">
-          <span class="text-xl hover:text-[#fc815c]">Publication</span>
+          <span class="text-xl hover:text-[#fc815c] transition-colors duration-200">Publication</span>
         </a>
         <a class="hidden md:block" href="#contact">
-          <span class="text-xl hover:text-[#fc815c]">Contact</span>
-        </a>
-
-        <a class="block md:hidden" href="tel:8688660351" target="_blank">
-          <svg class="hover:text-white" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-            </path>
-          </svg>
-        </a>
-
-  
-        <a class="block md:hidden" href="https://wa.me/8688660351?text=Hi, How are you?" target="_blank">
-          <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" width="26"
-            height="26" viewBox="0 0 448 512">
-            <path fill="currentColor"
-              d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z">
-            </path>
-          </svg>
+          <span class="text-xl hover:text-[#fc815c] transition-colors duration-200">Contact</span>
         </a>
       </div>
     </header>
 
-
+    <!-- HERO CONTENT -->
     <div class="flex -mt-24 sm:-mt-30 relative">
       <div class="pl-2 sm:pl-1 space-y-1 max-w-7xl mx-auto w-full relative">
 
@@ -65,64 +78,47 @@
           Software Development Engineer
         </h1>
         <button id="openProfileBtn"
-          class="relative ml-1 mt-4 sm:mt-6 bg-[#4595eb] py-1.5 sm:py-2 px-5 sm:px-6 text-sm sm:text-base font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 ease-in-out duration-300 group cursor-pointer">
+          class="relative ml-1 mt-4 sm:mt-6 py-1.5 sm:py-2 px-5 sm:px-6 text-sm sm:text-base font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 active:scale-95 ease-in-out duration-300 group cursor-pointer">
           Profile
-          <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
-            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
-            xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="40"
-            height="40" viewBox="0 0 100 100"
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="40" height="40" viewBox="0 0 100 100"
             class="absolute top-1/2 -translate-y-1/2 -right-6 group-hover:-right-8 ease-in-out duration-300">
             <g transform="translate(0,-952.36218)">
-              <path style="
-                      text-indent: 0;
-                      text-transform: none;
-                      direction: ltr;
-                      block-progression: tb;
-                      baseline-shift: baseline;
-                      color: #000000;
-                      enable-background: accumulate;
-                    "
+              <path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
                 d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-                fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
-                display="inline" overflow="hidden" />
+                fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible" display="inline" overflow="hidden" />
             </g>
           </svg>
         </button>
 
       </div>
 
-      
-      <ul class="space-y-4 sm:space-y-6 text-[#b0b2c3] absolute right-2 md:right-6">
+      <!-- Social icons -->
+      <ul class="space-y-4 sm:space-y-6 text-[#6b7280] absolute right-2 md:right-6">
         <li>
           <a href="https://www.linkedin.com/in/punit-sharma-ps22ecb0b04/" target="_blank">
-            <svg class="w-5 sm:w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor"
-                d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
+            <svg class="w-5 sm:w-7 hover:text-[#38bdf8] active:text-[#38bdf8] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z" />
             </svg>
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/_punit.sharma" target="_blank">
-            <svg class="w-5 sm:w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-              <path fill="currentColor"
-                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            <svg class="w-5 sm:w-7 hover:text-[#f472b6] active:text-[#f472b6] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
             </svg>
           </a>
         </li>
         <li>
           <a href="https://github.com/punitsharma04" target="_blank">
-            <svg class="w-5 sm:w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-              <path fill="currentColor"
-                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+            <svg class="w-5 sm:w-7 hover:text-white active:text-white transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+              <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
             </svg>
           </a>
         </li>
         <li>
           <a href="mailto:punitsharma191855101@gmail.com" target="_blank">
-            <svg class="w-5 sm:w-7 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <path fill="currentColor"
-                d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
+            <svg class="w-5 sm:w-7 hover:text-[#fc815c] active:text-[#fc815c] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z" />
             </svg>
           </a>
         </li>
@@ -130,44 +126,29 @@
     </div>
 
     <a href="#projects"
-      class="relative py-1.5 sm:py-2 px-5 sm:px-6 text-sm sm:text-base ml-1 mt-6 bg-[#4595eb] font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 ease-in-out duration-300 group cursor-pointer self-center mb-8 sm:mb-10">
+      class="relative py-1.5 sm:py-2 px-5 sm:px-6 text-sm sm:text-base font-extrabold rounded bg-gradient-to-l from-[#1595b6] to-[rgba(31,38,103,0.9)] hover:scale-105 active:scale-95 ease-in-out duration-300 group cursor-pointer self-center mb-8 sm:mb-10">
       Latest Projects
-      <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
-        xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" x="0px" y="0px" width="40"
-        height="40" viewBox="0 0 100 100"
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="40" height="40" viewBox="0 0 100 100"
         class="absolute rotate-90 top-7 -translate-x-1/2 left-1/2 group-hover:top-8 ease-in-out duration-300">
         <g transform="translate(0,-952.36218)">
-          <path style="
-                      text-indent: 0;
-                      text-transform: none;
-                      direction: ltr;
-                      block-progression: tb;
-                      baseline-shift: baseline;
-                      color: #000000;
-                      enable-background: accumulate;
-                    "
+          <path style="text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:#000000;enable-background:accumulate;"
             d="m 88.999835,1002.3621 c 0,-0.4628 -0.2799,-1.0773 -0.5639,-1.3755 l -15.9997,-17.00026 c -0.747,-0.7723 -1.9572,-0.8618 -2.8281,-0.078 -0.7786,0.7007 -0.798,2.0673 -0.078,2.8282 l 12.8435,13.62516 -69.37347,0 c -1.1046,0 -2,0.8954 -2,2 0,1.1046 0.8954,2.0001 2,2.0001 l 69.37347,0 -12.8435,13.6252 c -0.7199,0.7608 -0.6688,2.0938 0.078,2.8281 0.7885,0.7752 2.0925,0.7062 2.8281,-0.078 l 15.9997,-17.0002 c 0.4701,-0.4611 0.556,-0.9052 0.5639,-1.3748 z"
-            fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible"
-            display="inline" overflow="hidden" />
+            fill="#fff" fill-opacity="1" stroke="white" stroke-width="2" marker="none" visibility="visible" display="inline" overflow="hidden" />
         </g>
       </svg>
     </a>
 
-   
+    <!-- PROFILE MODAL -->
     <div id="profileOverlay"
       class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center z-[9999] p-4">
       <div id="custom-scroll"
         class="relative max-h-[90vh] overflow-y-auto w-full max-w-3xl rounded-2xl bg-[#0d0d0d] border border-slate-700/60 text-white shadow-2xl">
 
-        
         <button id="closeProfileBtn"
           class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center cursor-pointer z-10 transition-colors">
           ✕
         </button>
 
-        
         <div class="relative px-4 sm:px-6 pt-6 sm:pt-8 pb-4 sm:pb-6 border-slate-700/50">
           <div class="flex items-start sm:items-center gap-4 sm:gap-5">
             <img src="./assets/images/punitImage.jpg" alt="Punit Sharma"
@@ -175,21 +156,11 @@
             <div>
               <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Punit Sharma</h2>
               <p class="text-sky-400 text-xs sm:text-sm mt-0.5">Software Development Engineer · MERN · DSA</p>
-
-              
               <div class="flex flex-wrap gap-2 sm:gap-3 mt-2 sm:mt-3">
-                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400">
-                  <span class="text-purple-400">🎓</span> ECE, NIT Warangal · CGPA 8.88
-                </span>
-                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400">
-                  <span class="text-sky-400">💼</span> DP World, Hyderabad
-                </span>
-                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400">
-                  <span class="text-orange-400">🏢</span> Samsung (SRIB) Intern
-                </span>
-                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400">
-                  <span class="text-yellow-400">⭐</span> CodeChef 3★ · CF Pupil
-                </span>
+                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400"><span class="text-purple-400">🎓</span> ECE, NIT Warangal · CGPA 8.88</span>
+                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400"><span class="text-sky-400">💼</span> DP World, Hyderabad</span>
+                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400"><span class="text-orange-400">🏢</span> Samsung (SRIB) Intern</span>
+                <span class="flex items-center gap-1 sm:gap-1.5 text-xs text-slate-400"><span class="text-yellow-400">⭐</span> CodeChef 3★ · CF Pupil</span>
               </div>
             </div>
           </div>
@@ -197,26 +168,16 @@
 
         <div class="px-4 sm:px-6 py-4 sm:py-6 space-y-6 sm:space-y-8">
 
-          
           <div>
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">About</h3>
             <p class="text-slate-300 leading-relaxed text-sm sm:text-base text-justify">
-              Hi, I'm Punit Sharma.
-              I'm a Software Development Engineer at DP World, Hyderabad, and a 2026 graduate in Electronics and
-              Communication Engineering from NIT Warangal. I am passionate about Competitive Programming, Data
-              Structures & Algorithms, and Full-Stack Development. I enjoy solving challenging problems, building
-              scalable applications, and turning ideas into impactful software solutions.
-              My professional journey includes an internship at Samsung Research Institute Bangalore, where I gained
-              hands-on experience working on real-world engineering problems. I'm always eager to learn, explore new
-              technologies, and continuously grow as a developer.
+              Hi, I'm Punit Sharma. I'm a Software Development Engineer at DP World, Hyderabad, and a 2026 graduate in Electronics and Communication Engineering from NIT Warangal. I am passionate about Competitive Programming, Data Structures & Algorithms, and Full-Stack Development. I enjoy solving challenging problems, building scalable applications, and turning ideas into impactful software solutions. My professional journey includes an internship at Samsung Research Institute Bangalore, where I gained hands-on experience working on real-world engineering problems. I'm always eager to learn, explore new technologies, and continuously grow as a developer.
             </p>
           </div>
 
-          
           <div>
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">Experience</h3>
             <div class="space-y-3">
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <div class="flex items-start justify-between gap-2 flex-wrap">
                   <div>
@@ -225,12 +186,8 @@
                   </div>
                   <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full whitespace-nowrap">Current</span>
                 </div>
-                <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                  Building enterprise-grade software solutions and scalable full-stack applications using modern
-                  engineering practices.
-                </p>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">Building enterprise-grade software solutions and scalable full-stack applications using modern engineering practices.</p>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <div class="flex items-start justify-between gap-2 flex-wrap">
                   <div>
@@ -239,149 +196,104 @@
                   </div>
                   <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full whitespace-nowrap">Internship</span>
                 </div>
-                <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                  During my internship at Samsung Research Institute Bangalore, I developed a Python-based log analysis
-                  and debugging tool with an intuitive GUI using Tkinter and CustomTkinter. The tool streamlined the
-                  process of analyzing large-scale system logs by supporting advanced multi-keyword searches with
-                  case-insensitive and partial-match capabilities. I also implemented automatic sequence diagram
-                  generation to visualize inter-module message flows, making trace debugging more efficient and easier
-                  to understand. Additionally, I integrated the solution with existing log parsing systems, enabling
-                  seamless debugging workflows and improving developer productivity.
-                </p>
+                <p class="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">Developed a Python-based log analysis and debugging tool with an intuitive GUI using Tkinter and CustomTkinter. Implemented automatic sequence diagram generation to visualize inter-module message flows, integrated with existing log parsing systems enabling seamless debugging workflows.</p>
               </div>
-
             </div>
           </div>
 
-          
           <div>
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">Skills &amp; Technologies</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Programming Languages</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">C++</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Java</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">JavaScript</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Python</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">C++</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Java</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">JavaScript</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Python</span>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-purple-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Core CS</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">DSA</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">OOP</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">OS</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">CN</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">DBMS</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">DSA</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">OOP</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">OS</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">CN</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">DBMS</span>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Frontend</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">HTML</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">CSS</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Tailwind</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">React.js</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">HTML</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">CSS</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Tailwind</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">React.js</span>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-green-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Backend</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Node.js</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Express.js</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Spring Boot</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Node.js</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Express.js</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Spring Boot</span>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Database &amp; Deployment</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">MongoDB</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Mongoose</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Render</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Netlify</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">MongoDB</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Mongoose</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Render</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Netlify</span>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <h4 class="text-orange-400 text-xs font-semibold uppercase tracking-wider mb-2.5">Tools</h4>
                 <div class="flex flex-wrap gap-1.5">
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Git</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">GitHub</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">Postman</span>
-                  <span class="px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-xs transition-colors">VS Code</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Git</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">GitHub</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">Postman</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-800 text-xs">VS Code</span>
                 </div>
               </div>
-
             </div>
           </div>
 
-          
           <div>
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">Achievements</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-yellow-400 text-lg mt-0.5">🏆</span>
-                <div>
-                  <p class="text-white text-sm font-medium">CodeChef 3★</p>
-                  <p class="text-slate-400 text-xs mt-0.5">Max Rating 1646 · handle PUNITSHARMA101</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">CodeChef 3★</p><p class="text-slate-400 text-xs mt-0.5">Max Rating 1646 · handle PUNITSHARMA101</p></div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-blue-400 text-lg mt-0.5">🏆</span>
-                <div>
-                  <p class="text-white text-sm font-medium">Codeforces Pupil</p>
-                  <p class="text-slate-400 text-xs mt-0.5">Max Rating 1287 · handle PUNITSHARMA101</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">Codeforces Pupil</p><p class="text-slate-400 text-xs mt-0.5">Max Rating 1287 · handle PUNITSHARMA101</p></div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-green-400 text-lg mt-0.5">📊</span>
-                <div>
-                  <p class="text-white text-sm font-medium">800+ DSA Problems</p>
-                  <p class="text-slate-400 text-xs mt-0.5">LeetCode · GFG · CodeStudio</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">800+ DSA Problems</p><p class="text-slate-400 text-xs mt-0.5">LeetCode · GFG · CodeStudio</p></div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-orange-400 text-lg mt-0.5">🎯</span>
-                <div>
-                  <p class="text-white text-sm font-medium">Global Rank 232</p>
-                  <p class="text-slate-400 text-xs mt-0.5">CodeChef Starters115 · 19,000+ participants</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">Global Rank 232</p><p class="text-slate-400 text-xs mt-0.5">CodeChef Starters115 · 19,000+ participants</p></div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-purple-400 text-lg mt-0.5">✨</span>
-                <div>
-                  <p class="text-white text-sm font-medium">JEE Advanced Qualified</p>
-                  <p class="text-slate-400 text-xs mt-0.5">AIR 8450 · JEE Mains AIR 5860</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">JEE Advanced Qualified</p><p class="text-slate-400 text-xs mt-0.5">AIR 8450 · JEE Mains AIR 5860</p></div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors flex items-start gap-3">
                 <span class="text-pink-400 text-lg mt-0.5">⭐</span>
-                <div>
-                  <p class="text-white text-sm font-medium">5★ HackerRank</p>
-                  <p class="text-slate-400 text-xs mt-0.5">Problem Solving &amp; C++</p>
-                </div>
+                <div><p class="text-white text-sm font-medium">5★ HackerRank</p><p class="text-slate-400 text-xs mt-0.5">Problem Solving &amp; C++</p></div>
               </div>
-
             </div>
           </div>
 
-          
           <div>
             <h3 class="text-xs font-bold tracking-[3px] uppercase text-slate-500 mb-3">Education</h3>
             <div class="space-y-3">
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <div class="flex items-start justify-between gap-2 flex-wrap">
                   <div>
@@ -395,33 +307,30 @@
                   </div>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <div class="flex items-start justify-between gap-2 flex-wrap">
                   <div>
                     <p class="font-semibold text-white text-sm">XII · Telangana State Board</p>
                     <p class="text-purple-400 text-xs mt-0.5">Pragati Mahavidyalaya Junior College, Hyderabad</p>
                   </div>
-                  <div class=" text-left md:text-right  shrink-0">
+                  <div class="text-right flex-shrink-0">
                     <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">2019 – 2021</span>
                     <p class="text-sky-400 text-xs font-semibold mt-1.5">96.9%</p>
                   </div>
                 </div>
               </div>
-
               <div class="rounded-xl p-3 sm:p-4 hover:bg-slate-800/30 transition-colors">
                 <div class="flex items-start justify-between gap-2 flex-wrap">
                   <div>
                     <p class="font-semibold text-white text-sm">X · RBSE</p>
                     <p class="text-purple-400 text-xs mt-0.5">Central Children Academy, Sikar Rajasthan</p>
                   </div>
-                  <div class=" text-left md:text-right flex-shrink-0">
+                  <div class="text-right flex-shrink-0">
                     <span class="text-xs text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">2013 – 2019</span>
                     <p class="text-sky-400 text-xs font-semibold mt-1.5">92.5%</p>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -431,185 +340,153 @@
 
   </section>
 
-   <section id="projects" class="max-w-sm md:max-w-xl lg:max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl sm:text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae]">
+  <!-- PROJECTS -->
+  <section id="projects" class="max-w-sm md:max-w-xl lg:max-w-7xl mx-auto px-4 mt-8 sm:mt-12">
+    <h2 class="text-3xl sm:text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] reveal">
       Latest Projects
     </h2>
- 
 
+    <!-- Project 1: Career Forge -->
     <div class="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-6 gap-6 lg:gap-20 justify-center items-center mt-8 sm:mt-12">
-      <a href="https://careerinsights.netlify.app/" target="_blank" class="w-full flex justify-center">
-        <div class="relative group hover:scale-105 ease-in-out duration-200">
-          <span
-            class="absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 top-5 group-hover:-top-10 ease-in-out duration-300 bg-[#fc815c] px-2 py-1 text-sm rounded w-max flex items-center gap-1 after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
+      <a href="https://careerinsights.netlify.app/" target="_blank" class="w-full flex justify-center reveal-left">
+        <div class="project-card relative ease-in-out duration-200 cursor-pointer" data-href="https://careerinsights.netlify.app/">
+          <span class="project-tooltip absolute left-1/2 -translate-x-1/2 opacity-0 top-5 ease-in-out duration-300 bg-[#fc815c] px-2 py-1 text-sm rounded w-max flex items-center gap-1 after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2 pointer-events-none z-10">
             Career Forge
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </span>
-          <img class="w-full max-w-xs sm:max-w-sm lg:max-w-120 rounded-3xl mr-auto relative" src="./assets/images/lp.jpg" alt="" />
+          <img class="project-img w-full max-w-xs sm:max-w-sm lg:max-w-120 rounded-3xl mr-auto relative ease-in-out duration-200" src="./assets/images/lp.jpg" alt="Career Forge" />
         </div>
       </a>
-      <div class="w-full">
+      <div class="w-full reveal-right">
         <h3 class="text-[#fc815c] font-bold text-xl sm:text-2xl lg:text-4xl">Career Forge</h3>
         <span class="text-[#fc815c] text-sm sm:text-base lg:text-lg">(Career Growth Companion)</span>
-        <p class="text-justify text-xs sm:text-sm mt-2">
-          CareerForge is your one-stop destination for career preparation and professional growth.
-          Analyze resumes, prepare for interviews, identify skill gaps, and generate ATS-friendly resumes-all powered by AI.
+        <p class="text-justify text-xs sm:text-sm lg:text-base mt-2 text-slate-300">
+          CareerForge is your one-stop destination for career preparation and professional growth. Analyze resumes, prepare for interviews, identify skill gaps, and generate ATS-friendly resumes — all powered by AI.
         </p>
-        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">React.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Express.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Node.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Google Gemini AI</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Puppeteer</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">MongoDB</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Mongoose</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Scss</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Javascript</li>
+        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-3">
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">React.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Express.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Node.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Google Gemini AI</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Puppeteer</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">MongoDB</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Mongoose</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Scss</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Javascript</li>
         </ul>
       </div>
     </div>
- 
-    
-    <div class="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-6 gap-6 lg:gap-20 justify-center items-center mt-8 sm:mt-12">
-      
-      <a href="https://countryapireactapp.netlify.app/" target="_blank" class="w-full flex order-1 lg:order-2">
-        <div class="relative group hover:scale-105 ease-in-out duration-200">
-          <span
-            class="text-black absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-top-10 top-5 ease-in-out duration-300 bg-[#ffe578] px-2 py-1 text-sm rounded w-max items-center gap-1 flex after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
+
+    <!-- Project 2: Country Explorer — image first on small, text left on lg -->
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-20 items-center mt-8 sm:mt-12">
+      <a href="https://countryapireactapp.netlify.app/" target="_blank" class="w-full flex order-1 lg:order-2 reveal-right">
+        <div class="project-card relative ease-in-out duration-200 cursor-pointer w-full" data-href="https://countryapireactapp.netlify.app/">
+          <span class="project-tooltip text-black absolute left-1/2 -translate-x-1/2 opacity-0 top-5 ease-in-out duration-300 bg-[#ffe578] px-2 py-1 text-sm rounded w-max flex items-center gap-1 after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2 pointer-events-none z-10">
             Country Explorer
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </span>
-          <img class="w-full max-w-xs sm:max-w-sm lg:max-w-120 mr-auto relative rounded-3xl" src="./assets/images/lp2.png" alt="" />
+          <img class="project-img w-full max-w-xs sm:max-w-sm lg:max-w-120 mr-auto relative rounded-3xl ease-in-out duration-200" src="./assets/images/lp2.png" alt="Country Explorer" />
         </div>
       </a>
-      
-      <div class="w-full order-2 lg:order-1">
+      <div class="w-full order-2 lg:order-1 reveal-left">
         <h3 class="text-[#ffe578] font-bold text-xl sm:text-2xl lg:text-4xl">Country Explorer</h3>
         <span class="text-[#ffe578] text-sm sm:text-base lg:text-lg">(Explore the World)</span>
-        <p class="text-justify text-xs sm:text-sm mt-2">
-          Country Explorer helps users discover and learn about countries worldwide through real-time search,
-          region-based filtering, and detailed country profiles. Built with React, React Router, and the REST Countries API.
+        <p class="text-justify text-xs sm:text-sm lg:text-base mt-2 text-slate-300">
+          Country Explorer helps users discover and learn about countries worldwide through real-time search, region-based filtering, and detailed country profiles. Built with React, React Router, and the REST Countries API.
         </p>
-        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">React.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Javascript</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Rest Countries Api</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Css</li>
+        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-3">
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">React.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Javascript</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Rest Countries Api</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Css</li>
         </ul>
       </div>
     </div>
- 
-    <!-- Project 3: VideoTube — image left, text right on lg; stacked on small -->
-    <div class="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-6 gap-6 lg:gap-20 justify-center items-center mt-8 sm:mt-12">
-      <div class="w-full flex lg:order-1">
-        <div class="relative group hover:scale-105 ease-in-out duration-200">
-          <a class="flex w-full" href="https://backend-lag6.onrender.com" target="_blank">
-            <span
-              class="absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 top-5 group-hover:-top-10 ease-in-out duration-300 bg-[#fc815c] px-2 py-1 text-sm rounded w-max flex items-center gap-1 after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
-              VideoTube
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </span>
-          </a>
-          <img id="videoTubeImage" class="w-full max-w-xs sm:max-w-sm lg:max-w-120 rounded-3xl mr-auto relative" src="./assets/images/videoTube2.jpg" alt="" />
+
+    <!-- Project 3: VideoTube — GitHub link -->
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-20 items-center mt-8 sm:mt-12">
+      <div class="w-full flex lg:order-1 reveal-left">
+        <div class="project-card relative ease-in-out duration-200 cursor-pointer w-full" data-href="https://github.com/punitsharma04/VideoTube">
+          <span class="project-tooltip absolute left-1/2 -translate-x-1/2 opacity-0 top-5 ease-in-out duration-300 bg-[#fc815c] px-2 py-1 text-sm rounded w-max flex items-center gap-1 after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2 pointer-events-none z-10">
+            View on GitHub
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </span>
+          <img id="videoTubeImage" class="project-img w-full max-w-xs sm:max-w-sm lg:max-w-120 rounded-3xl mr-auto relative ease-in-out duration-200" src="./assets/images/videoTube2.jpg" alt="VideoTube" />
         </div>
       </div>
-      <div class="w-full lg:order-2">
+      <div class="w-full lg:order-2 reveal-right">
         <h3 class="text-[#fc815c] font-bold text-xl sm:text-2xl lg:text-4xl">VideoTube</h3>
         <span class="text-[#fc815c] text-sm sm:text-base lg:text-lg">(Backend Engineering)</span>
-        <p class="text-justify text-xs sm:text-sm mt-2">
-          Designed and developed a backend architecture for a video streaming and social media platform with secure
-          authentication, media management, and user engagement features.
+        <p class="text-justify text-xs sm:text-sm lg:text-base mt-2 text-slate-300">
+          Designed and developed a backend architecture for a video streaming and social media platform with secure authentication, media management, and user engagement features.
         </p>
-        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Node.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Express.js</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">MongoDB</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Mongoose</li>
-          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#999] my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Cloudinary</li>
+        <ul class="flex flex-wrap gap-1.5 sm:gap-2 mt-3">
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Node.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Express.js</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">MongoDB</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Mongoose</li>
+          <li class="border text-xs rounded-xl lg:rounded-[50px] border-[#444] text-slate-300 my-auto px-1.5 py-0.5 lg:text-base lg:px-2.5 lg:py-1.5">Cloudinary</li>
         </ul>
       </div>
     </div>
- 
+
     <div id="architectureModal" class="fixed inset-0 bg-black/90 hidden justify-center items-center z-[9999] p-4">
-      <button id="closeArchitectureModal" class="absolute top-6 right-8 text-white text-5xl cursor-pointer">
-        &times;
-      </button>
+      <button id="closeArchitectureModal" class="absolute top-6 right-8 text-white text-5xl cursor-pointer">&times;</button>
       <img src="./assets/images/videoTube3.jpg" alt="Architecture" class="max-w-[95vw] max-h-[90vh] rounded-xl" />
     </div>
- 
+
   </section>
- 
 
-
+  <!-- PUBLICATION -->
   <section id="publication" class="max-w-7xl mx-auto px-4 mt-16 sm:mt-20 mb-16 sm:mb-20">
-
-    <h2 class="text-3xl sm:text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] mb-8 sm:mb-12">
+    <h2 class="text-3xl sm:text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] mb-8 sm:mb-12 reveal">
       Publication
     </h2>
 
-    <div class="overflow-hidden">
-      <div class="p-4 sm:p-6 md:p-8">
+    <div class="overflow-hidden reveal">
+      <div class="p-4 sm:p-6 md:p-8 border border-slate-700/40 rounded-2xl bg-[#141414]">
 
-        
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
           <div class="flex-1">
             <div class="flex items-center gap-2 mb-3">
-              <span
-                class="font-bold tracking-[2px] uppercase text-sky-400 bg-sky-400/10 border border-sky-400/20 px-2.5 py-1 rounded-full">IEEE</span>
+              <span class="font-bold tracking-[2px] uppercase text-sky-400 bg-sky-400/10 border border-sky-400/20 px-2.5 py-1 rounded-full">IEEE</span>
               <span class="text-slate-500">KST 2026</span>
             </div>
             <h3 class="text-xl sm:text-2xl font-bold text-white leading-snug">
               CNN-Based Fingerprint Spoof Detection<br class="hidden sm:block"> for Embedded Systems
             </h3>
-            <p class="text-slate-400 text-sm mt-2">
-              18th International Conference on Knowledge and Smart Technology (KST 2026)
-            </p>
+            <p class="text-slate-400 text-sm mt-2">18th International Conference on Knowledge and Smart Technology (KST 2026)</p>
           </div>
-
-          <div
-            class="flex-shrink-0 hidden md:block border border-green-500/30 bg-green-500/10 rounded-xl px-4 py-3 text-center">
+          <div class="flex-shrink-0 hidden md:block border border-green-500/30 bg-green-500/10 rounded-xl px-4 py-3 text-center">
             <div class="text-2xl font-bold text-green-400">97%</div>
             <div class="text-xs text-slate-400 mt-0.5">Detection Accuracy</div>
           </div>
         </div>
 
         <p class="text-slate-300 leading-relaxed text-xs md:text-[16px] text-justify mb-6">
-          Co-authored and published an IEEE conference paper focused on detecting fingerprint spoofing attacks using
-          Convolutional Neural Networks (CNNs). Developed a real-time fingerprint authentication system on Raspberry Pi
-          hardware, achieving <span class="text-green-400 font-semibold">97% detection accuracy</span> against
-          artificial fingerprint attacks. The research demonstrates the application of Deep Learning, Computer Vision, and Embedded
-          Systems to enhance biometric security.
+          Co-authored and published an IEEE conference paper focused on detecting fingerprint spoofing attacks using Convolutional Neural Networks (CNNs). Developed a real-time fingerprint authentication system on Raspberry Pi hardware, achieving <span class="text-green-400 font-semibold">97% detection accuracy</span> against artificial fingerprint attacks. The research demonstrates the application of Deep Learning, Computer Vision, and Embedded Systems to enhance biometric security.
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <div class="rounded-xl p-3 border border-slate-700/40">
+          <div class="rounded-xl p-3 border border-slate-700/40 bg-[#1a1a1a]">
             <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Publisher</p>
             <p class="text-sm text-white font-medium">IEEE</p>
           </div>
-          <div class="rounded-xl p-3 border border-slate-700/40">
+          <div class="rounded-xl p-3 border border-slate-700/40 bg-[#1a1a1a]">
             <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Role</p>
             <p class="text-sm text-white font-medium">Co-Author</p>
           </div>
-          <div class="rounded-xl p-3 border border-slate-700/40">
+          <div class="rounded-xl p-3 border border-slate-700/40 bg-[#1a1a1a]">
             <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Hardware</p>
             <p class="text-sm text-white font-medium">Raspberry Pi</p>
           </div>
-          <div class="rounded-xl p-3 border border-slate-700/40">
+          <div class="rounded-xl p-3 border border-slate-700/40 bg-[#1a1a1a]">
             <p class="text-xs text-slate-500 uppercase tracking-wider mb-1">Accuracy</p>
             <p class="text-sm text-green-400 font-semibold">97%</p>
           </div>
@@ -617,114 +494,77 @@
 
       </div>
     </div>
-
   </section>
 
-  <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8  pb-12">
-    <h2 class="sm:text-[40px] text-3xl sm:text-4xl font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] mb-8 sm:mb-12">
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-7xl mx-auto px-4 pb-12">
+    <h2 class="text-3xl sm:text-[40px] font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] mb-8 sm:mb-12 reveal">
       Let's Connect
     </h2>
     <div class="flex flex-col md:flex-row items-center mt-6 sm:mt-10 gap-6 md:gap-0">
-      <div class="w-full">
-        <img src="./assets/images/contact-me.svg" alt="phone" />
+      <div class="w-full reveal-left">
+        <img src="./assets/images/contact-me.svg" alt="contact" />
       </div>
-      <form class="w-full px-4 sm:px-6 md:px-8 " id="contactForm">
-        <label for="name" class="block mb-2 text-sm font-medium  text-white">Name</label>
+      <form class="w-full reveal-right" id="contactForm">
+        <label for="name" class="block mb-2 text-sm font-medium text-slate-300">Name</label>
         <div class="relative mb-7">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor" viewBox="0 0 20 20">
-              <path
-                d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+            <svg class="w-4 h-4 text-slate-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
             </svg>
           </div>
           <input type="text" id="name" name="name"
-            class="border outline-none border-slate-700/40 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 placeholder-gray-400 text-white"
+            class="border outline-none border-slate-700/40 bg-[#1a1a1a] text-white text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 placeholder-slate-500"
             placeholder="Enter your name" />
           <span id="nameError" class="absolute left-0 -bottom-5 text-xs text-red-500"></span>
         </div>
-        <label for="email" class="block mb-2 text-sm font-medium  text-white">Your Email</label>
+        <label for="email" class="block mb-2 text-sm font-medium text-slate-300">Your Email</label>
         <div class="relative mb-7">
           <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-            <svg class="w-4 h-4  text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor" viewBox="0 0 20 16">
+            <svg class="w-4 h-4 text-slate-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
               <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-              <path
-                d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+              <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
             </svg>
           </div>
           <input type="text" id="email" name="email"
-            class="border outline-none border-slate-700/40  text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 placeholder-gray-400 text-white"
+            class="border outline-none border-slate-700/40 bg-[#1a1a1a] text-white text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full ps-10 p-2.5 placeholder-slate-500"
             placeholder="name@gmail.com" />
           <span id="emailError" class="absolute left-0 -bottom-5 text-xs text-red-500"></span>
         </div>
-        <label for="message" class="block mb-2 text-sm font-medium text-white">Message</label>
+        <label for="message" class="block mb-2 text-sm font-medium text-slate-300">Message</label>
         <div class="relative mb-4">
-          <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"></div>
           <textarea id="message" name="message" rows="8"
-            class="border outline-none border-slate-700/40  text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 placeholder-gray-400 text-white"></textarea>
+            class="border outline-none border-slate-700/40 bg-[#1a1a1a] text-white text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 placeholder-slate-500"></textarea>
           <span id="messageError" class="absolute left-0 -bottom-7 text-xs text-red-500"></span>
         </div>
         <button type="submit"
-          class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 mt-5 me-2 mb-2 focus:outline-none">
+          class="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] active:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 mt-5 me-2 mb-2 focus:outline-none transition-colors duration-200">
           Send
         </button>
       </form>
     </div>
   </section>
 
-  <footer class="flex flex-col items-center pb-10">
+  <footer class="flex flex-col items-center pb-10 border-t border-slate-800 pt-8">
     <a href="#hero" class="black-logo my-4">
-      <img class="h-12 w-auto" src="./assets/images/logo-removebg-preview.png"></img>
+      <img class="h-12 w-auto" src="./assets/images/logo-removebg-preview.png" />
     </a>
-    <ul class="mx-auto flex items-center justify-center gap-6 text-[#b0b2c3]">
-      <li>
-        <a href="https://github.com/punitsharma04/" target="_blank">
-          <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-            <path fill="currentColor"
-              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/punit-sharma-ps22ecb0b04/" target="_blank">
-          <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path fill="currentColor"
-              d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z">
-            </path>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.instagram.com/_punit.sharma" target="_blank">
-          <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path fill="currentColor"
-              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-            </path>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="mailto:punitsharma191855101@gmail.com" target="_blank">
-          <svg class="w-5 hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z">
-            </path>
-          </svg>
-        </a>
-      </li>
+    <ul class="mx-auto flex items-center justify-center gap-6 text-[#6b7280]">
+      <li><a href="https://github.com/punitsharma04/" target="_blank"><svg class="w-5 hover:text-white active:text-white transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg></a></li>
+      <li><a href="https://www.linkedin.com/in/punit-sharma-ps22ecb0b04/" target="_blank"><svg class="w-5 hover:text-[#38bdf8] active:text-[#38bdf8] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg></a></li>
+      <li><a href="https://www.instagram.com/_punit.sharma" target="_blank"><svg class="w-5 hover:text-[#f472b6] active:text-[#f472b6] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a></li>
+      <li><a href="mailto:punitsharma191855101@gmail.com" target="_blank"><svg class="w-5 hover:text-[#fc815c] active:text-[#fc815c] transition-colors duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg></a></li>
     </ul>
   </footer>
 
   <script>
+    // ── EmailJS ──
     emailjs.init({ publicKey: 'LCqb8HfvejGiyd94S' });
     const form = document.getElementById('contactForm');
     const btn = form.querySelector('button[type="submit"]');
-
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
-
     const nameError = document.getElementById('nameError');
     const emailError = document.getElementById('emailError');
     const messageError = document.getElementById('messageError');
@@ -734,45 +574,25 @@
       input.classList.remove('border-slate-700/40');
       input.classList.add('border-red-500');
     }
-
     function clearError(input, errorElement) {
       errorElement.textContent = '';
       input.classList.remove('border-red-500');
-      input.classList.add('border-slate-700/40')
+      input.classList.add('border-slate-700/40');
     }
-
     nameInput.addEventListener('input', () => clearError(nameInput, nameError));
     emailInput.addEventListener('input', () => clearError(emailInput, emailError));
     messageInput.addEventListener('input', () => clearError(messageInput, messageError));
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       let valid = true;
-
-      if (!nameInput.value.trim()) {
-        showError(nameInput, nameError, 'Name is required');
-        valid = false;
-      }
-
-      if (!emailInput.value.trim()) {
-        showError(emailInput, emailError, 'Email is required');
-        valid = false;
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-        showError(emailInput, emailError, 'Please enter a valid email');
-        valid = false;
-      }
-
-      if (!messageInput.value.trim()) {
-        showError(messageInput, messageError, 'Message is required');
-        valid = false;
-      }
-
+      if (!nameInput.value.trim()) { showError(nameInput, nameError, 'Name is required'); valid = false; }
+      if (!emailInput.value.trim()) { showError(emailInput, emailError, 'Email is required'); valid = false; }
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) { showError(emailInput, emailError, 'Please enter a valid email'); valid = false; }
+      if (!messageInput.value.trim()) { showError(messageInput, messageError, 'Message is required'); valid = false; }
       if (!valid) return;
-
       btn.textContent = 'Sending...';
       btn.disabled = true;
-
       try {
         await emailjs.sendForm('service_4j9qkf1', 'template_800a0ta', form);
         btn.textContent = 'Sent ✓';
@@ -784,8 +604,44 @@
         btn.disabled = false;
       }
     });
+
+    // ── Touch: tooltip + scale for project cards ──
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('touchstart', (e) => {
+        // Deactivate all other cards first
+        document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
+        card.classList.add('touch-active');
+      }, { passive: true });
+
+      // On tap (touchend) navigate if still active
+      card.addEventListener('touchend', (e) => {
+        if (card.classList.contains('touch-active')) {
+          setTimeout(() => {
+            card.classList.remove('touch-active');
+          }, 600);
+        }
+      }, { passive: true });
+    });
+
+    // Dismiss touch-active on tap outside
+    document.addEventListener('touchstart', (e) => {
+      if (!e.target.closest('.project-card')) {
+        document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
+      }
+    }, { passive: true });
+
+    // ── Scroll reveal using IntersectionObserver ──
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
   </script>
 
 </body>
-
 </html>
