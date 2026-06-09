@@ -25,6 +25,7 @@ Deployed on Netlify — https://punitsharma-portfolio.netlify.app
 │   ├── script.js
 │   └── assets/
 │       └── images/
+|       └── resume/
 ├── .gitignore
 ├── netlify.toml
 ├── package.json
